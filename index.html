@@ -109,7 +109,7 @@ $(".form-horizontal").submit(function(event) {
                                   ssl_amount: $('amount').val(),
                                   ssl_transaction_type: "ccsale",
                                   ssl_cvv2cvc2_indicator: "1",
-                                  ssl_cvv2cvc2=$('cvv').val() });
+                                  ssl_cvv2cvc2: $('cvv').val() });
 
      /* Alerts the results */
      posting.done(function( data ) {
