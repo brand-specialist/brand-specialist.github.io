@@ -92,7 +92,30 @@
   </form>
 </div>
 <script type="text/javascript">
+$(".form-horizontal").submit(function(event) {
 
+     /* stop form from submitting normally */
+     event.preventDefault();
+
+     /* get the action attribute from the <form action=""> element */
+     var $form = $( this ),
+         url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
+
+     /* Send the data using post with element id name and name2*/
+     var posting = $.post( url, { ssl_merchant_id: "007979", ssl_user_id: webpage, ssl_pin: ZWGSQB,
+                                  ssl_show_form=false, ssl_result_format=ascii,
+                                  ssl_card_number: $('card-number').val(),
+                                  ssl_exp_date: $('expiry-month').val() + $('expiry-year').val(),
+                                  ssl_amount: $('amount').val(),
+                                  ssl_transaction_type: "ccsale",
+                                  ssl_cvv2cvc2_indicator: "1",
+                                  ssl_cvv2cvc2=$('cvv').val() });
+
+     /* Alerts the results */
+     posting.done(function( data ) {
+       alert('success');
+     });
+   });
 </script>
 </body>
 </html>
