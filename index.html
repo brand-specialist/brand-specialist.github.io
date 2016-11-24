@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container">
-  <form class="form-horizontal" method="post" id="form">
+  <form class="form-horizontal" id="form">
     <fieldset>
       <legend>Payment</legend>
       <div class="form-group">
@@ -85,18 +85,14 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-          <button type="submit" class="btn btn-success">Pay Now</button>
+          <button type="submit" class="btn btn-success" onclick="myFunction()">Pay Now</button>
         </div>
       </div>
     </fieldset>
   </form>
 </div>
 <script type="text/javascript">
-$("#form")[0].submit(function(event) {
-
-     /* stop form from submitting normally */
-     event.preventDefault();
-
+function myFuction() {
      /* get the action attribute from the <form action=""> element */
      var $form = $( this ),
          url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
