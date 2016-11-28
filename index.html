@@ -94,10 +94,11 @@
 <script type="text/javascript">
 function processPayment() {
   var  url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
+  var expiryDate = $('expiry-month').val() + $('expiry-year').val();
   $.post( url, { ssl_merchant_id: "007979", ssl_user_id: "webpage", ssl_pin: "ZWGSQB",
                                     ssl_show_form: false, ssl_result_format: "ascii",
                                     ssl_card_number: $('card-number').val(),
-                                    ssl_exp_date: $('expiry-month').val() + $('expiry-year').val(),
+                                    ssl_exp_date: expiryDate,
                                     ssl_amount: $('amount').val(),
                                     ssl_transaction_type: "ccsale",
                                     ssl_cvv2cvc2_indicator: "1",
