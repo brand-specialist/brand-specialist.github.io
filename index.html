@@ -96,13 +96,27 @@
 function processPayment(form) {
   var  url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
   var expiryDate = $('#expiry-month').val() + $('#expiry-year').val();
-  form.prepend('<input type="hidden" name="ssl_merchant_id" value="007979" /> ');
-  form.prepend('<input type="hidden" name="ssl_user_id" value="webpage" /> ');
-  form.prepend('<input type="hidden" name="ssl_pin" value="ZWGSQB" /> ');
+
+  $('<input>').attr({
+    type: 'hidden',
+    name: 'ssl_merchant_id',
+    value: "007979" }).appendTo(form);
+
+  $('<input>').attr({
+    type: 'hidden',
+    name: 'ssl_user_id',
+    value: "webpage" }).appendTo(form);
+
+  $('<input>').attr({
+    type: 'hidden',
+    name: 'ssl_pin',
+    value: "ZWGSQB"}).appendTo(form);
+
   $('<input>').attr({
     type: 'hidden',
     name: 'ssl_exp_date',
     value: expiryDate}).appendTo(form);
+
   form.remove($('#expiry-month'));
   form.remove($('#expiry-year'));
   form.submit();
