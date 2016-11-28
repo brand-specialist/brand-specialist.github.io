@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container">
-  <form class="form-horizontal" id="form" action="javascript:processPayment();">
+  <form class="form-horizontal" id="form" action="javascript:processPayment(this);">
     <fieldset>
       <legend>Payment</legend>
       <div class="form-group">
@@ -93,17 +93,27 @@
 </div>
 
 <script type="text/javascript">
-function processPayment() {
+function processPayment(form) {
   var  url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
   var expiryDate = $('#expiry-month').val() + $('#expiry-year').val();
-  $.post( url, { ssl_merchant_id: "007979", ssl_user_id: "webpage", ssl_pin: "ZWGSQB",
-                                    ssl_show_form: false, ssl_result_format: "ascii",
-                                    ssl_card_number: $('#card-number').val(),
-                                    ssl_exp_date: expiryDate,
-                                    ssl_amount: $('#amount').val(),
-                                    ssl_transaction_type: "ccsale",
-                                    ssl_cvv2cvc2_indicator: "1",
-                                    ssl_cvv2cvc2: $('#cvv').val() });
+  form.prepend('<input type="hidden" name="ssl_merchant_id" value="007979" /> ');
+  form.prepend('<input type="hidden" name="ssl_user_id" value="webpage" /> ');
+  form.prepend('<input type="hidden" name="ssl_pin" value="ZWGSQB" /> ');
+  $('<input>').attr({
+    type: 'hidden',
+    name: 'ssl_exp_date'
+    value: expiryDate}).appendTo(form)
+  form.remove($('#expiry-month'));
+  form.remove($('#expiry-year'));
+  form.submit();
+  // form.post( url, { ssl_merchant_id: "007979", ssl_user_id: "webpage", ssl_pin: "ZWGSQB",
+  //                                   ssl_show_form: false, ssl_result_format: "ascii",
+  //                                   ssl_card_number: $('#card-number').val(),
+  //                                   ssl_exp_date: expiryDate,
+  //                                   ssl_amount: $('#amount').val(),
+  //                                   ssl_transaction_type: "ccsale",
+  //                                   ssl_cvv2cvc2_indicator: "1",
+  //                                   ssl_cvv2cvc2: $('#cvv').val() });
 
 }
 // document.getElementById("form").onsubmit = function() { postPayment() };
