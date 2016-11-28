@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container">
-  <form class="form-horizontal" id="form" action="https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do" method="post">
+  <form class="form-horizontal" id="form" action="javascript:processPayment();">
     <fieldset>
       <legend>Payment</legend>
       <div class="form-group">
@@ -92,6 +92,9 @@
   </form>
 </div>
 <script type="text/javascript">
+function processPayment() {
+  alert("success");
+}
 // document.getElementById("form").onsubmit = function() { postPayment() };
 // function submitPaymet() {
 //   alert('success');
