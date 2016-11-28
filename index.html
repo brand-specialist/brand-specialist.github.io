@@ -101,7 +101,7 @@ function processPayment(form) {
   form.prepend('<input type="hidden" name="ssl_pin" value="ZWGSQB" /> ');
   $('<input>').attr({
     type: 'hidden',
-    name: 'ssl_exp_date'
+    name: 'ssl_exp_date',
     value: expiryDate}).appendTo(form);
   form.remove($('#expiry-month'));
   form.remove($('#expiry-year'));
