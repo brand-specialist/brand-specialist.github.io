@@ -96,39 +96,26 @@
 function processPayment() {
   var  url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
   var expiryDate = $('#expiry-month').val() + $('#expiry-year').val();
+  var form  = $('#form');
 
-  $('<input>').attr({
-    type: 'hidden',
-    name: 'ssl_merchant_id',
-    value: "007979" }).appendTo($('#form'));
-
-  $('<input>').attr({
-    type: 'hidden',
-    name: 'ssl_user_id',
-    value: "webpage" }).appendTo($('#form'));
-
-  $('<input>').attr({
-    type: 'hidden',
-    name: 'ssl_pin',
-    value: "ZWGSQB"}).appendTo($('#form'));
-
-  $('<input>').attr({
-    type: 'hidden',
-    name: 'ssl_exp_date',
-    value: expiryDate}).appendTo(form);
+  addHidden(form, 'ssl_merchant_id', '007979');
+  addHidden(form, 'ssl_user_id', 'webpage');
+  addHidden(form, 'ssl_pin', 'ZWGSQB');
+  addHidden(form, 'ssl_exp_date', expiryDate);
 
   $('#form').remove($('#expiry-month'));
   $('#form').remove($('#expiry-year'));
+  
   $('#form').submit();
-  // form.post( url, { ssl_merchant_id: "007979", ssl_user_id: "webpage", ssl_pin: "ZWGSQB",
-  //                                   ssl_show_form: false, ssl_result_format: "ascii",
-  //                                   ssl_card_number: $('#card-number').val(),
-  //                                   ssl_exp_date: expiryDate,
-  //                                   ssl_amount: $('#amount').val(),
-  //                                   ssl_transaction_type: "ccsale",
-  //                                   ssl_cvv2cvc2_indicator: "1",
-  //                                   ssl_cvv2cvc2: $('#cvv').val() });
+}
 
+function addHidden(theForm, key, value) {
+    // Create a hidden input element, and append it to the form:
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    theForm.appendChild(input);
 }
 // document.getElementById("form").onsubmit = function() { postPayment() };
 // function submitPaymet() {
