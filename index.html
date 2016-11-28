@@ -96,7 +96,7 @@
 function processPayment() {
   var  url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
   var expiryDate = $('#expiry-month').val() + $('#expiry-year').val();
-  var form  = $('#form');
+  var form  = $('#form')[0];
 
   addHidden(form, 'ssl_merchant_id', '007979');
   addHidden(form, 'ssl_user_id', 'webpage');
@@ -105,7 +105,7 @@ function processPayment() {
 
   $('#form').remove($('#expiry-month'));
   $('#form').remove($('#expiry-year'));
-  
+
   $('#form').submit();
 }
 
