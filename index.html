@@ -103,10 +103,10 @@ function processPayment() {
   addHidden(form, 'ssl_pin', 'ZWGSQB');
   addHidden(form, 'ssl_exp_date', expiryDate);
 
-  $('#form').remove($('#expiry-month'));
-  $('#form').remove($('#expiry-year'));
+  form.remove($('#expiry-month'));
+  form.remove($('#expiry-year'));
 
-  $('#form').submit();
+  form.submit();
 }
 
 function addHidden(theForm, key, value) {
