@@ -85,14 +85,18 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-          <button type="submit" class="btn btn-success" onclick="myFunction()">Pay Now</button>
+          <button type="submit" class="btn btn-success">Pay Now</button>
         </div>
       </div>
     </fieldset>
   </form>
 </div>
 <script type="text/javascript">
-function myFuction() {
+$("#form")[0].submit(function(event) {
+
+     /* stop form from submitting normally */
+     event.preventDefault();
+
      /* get the action attribute from the <form action=""> element */
      var $form = $( this ),
          url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
