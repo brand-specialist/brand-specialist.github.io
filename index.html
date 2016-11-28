@@ -54,7 +54,7 @@
               </select>
             </div>
             <div class="col-xs-3">
-              <select class="form-control" name="expiry-year">
+              <select class="form-control" name="expiry-year" id="expiry-year">
                 <option value="13">2013</option>
                 <option value="14">2014</option>
                 <option value="15">2015</option>
@@ -94,15 +94,15 @@
 <script type="text/javascript">
 function processPayment() {
   var  url = "https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do";
-  var expiryDate = $('expiry-month').val() + $('expiry-year').val();
+  var expiryDate = $('#expiry-month').val() + $('#expiry-year').val();
   $.post( url, { ssl_merchant_id: "007979", ssl_user_id: "webpage", ssl_pin: "ZWGSQB",
                                     ssl_show_form: false, ssl_result_format: "ascii",
-                                    ssl_card_number: $('card-number').val(),
+                                    ssl_card_number: $('#card-number').val(),
                                     ssl_exp_date: expiryDate,
-                                    ssl_amount: $('amount').val(),
+                                    ssl_amount: $('#amount').val(),
                                     ssl_transaction_type: "ccsale",
                                     ssl_cvv2cvc2_indicator: "1",
-                                    ssl_cvv2cvc2: $('cvv').val() });
+                                    ssl_cvv2cvc2: $('#cvv').val() });
 
 }
 // document.getElementById("form").onsubmit = function() { postPayment() };
