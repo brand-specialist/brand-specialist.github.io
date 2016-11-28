@@ -37,7 +37,7 @@
         <div class="col-sm-9">
           <div class="row">
             <div class="col-xs-3">
-              <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
+              <select class="form-control col-sm-2" name="expiry-month" id="expiry-month" disabled="disabled">
                 <option>Month</option>
                 <option value="01">Jan (01)</option>
                 <option value="02">Feb (02)</option>
@@ -54,7 +54,7 @@
               </select>
             </div>
             <div class="col-xs-3">
-              <select class="form-control" name="expiry-year" id="expiry-year">
+              <select class="form-control" name="expiry-year" id="expiry-year" disabled="disabled">
                 <option value="13">2013</option>
                 <option value="14">2014</option>
                 <option value="15">2015</option>
@@ -102,9 +102,6 @@ function processPayment() {
   addHidden(form, 'ssl_user_id', 'webpage');
   addHidden(form, 'ssl_pin', 'ZWGSQB');
   addHidden(form, 'ssl_exp_date', expiryDate);
-
-  form.remove($('#expiry-month'));
-  form.remove($('#expiry-year'));
 
   form.submit();
 }
