@@ -103,9 +103,11 @@ function processPayment() {
   addHidden(form, 'ssl_pin', 'ZWGSQB');
   addHidden(form, 'ssl_exp_date', expiryDate);
   addHidden(form, 'ssl_show_form', false);
-  addHidden(form, 'ssl_result_format', 'ascii');
+  addHidden(form, 'ssl_result_format', 'HTML');
   addHidden(form, 'ssl_transaction_type', 'ccsale');
   addHidden(form, 'ssl_cvv2cvc2_indicator', '1');
+  addHidden(form, 'ssl_transaction_currency', 'EGY');
+
 
   $('#card-number').attr("name", "ssl_card_number")
   $('#amount').attr("name", "ssl_amount")
